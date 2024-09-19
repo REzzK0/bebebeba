@@ -79,6 +79,12 @@ namespace wpf_1135_EF_sample
             new WinSingerEditor(SelectedSinger).ShowDialog();
             UpdateList();
         }
+
+        private void OpenYellowPressWin(object sender, RoutedEventArgs e)
+        {
+            Window win = new YellowPressWindow();
+            win.Show();
+        }
     }
 }
 
