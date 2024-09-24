@@ -22,19 +22,19 @@ namespace wpf_1135_EF_sample
     /// </summary>
     public partial class YellowPressWindow : Window, INotifyPropertyChanged
     {
-        private List<Singer> singers;
+        private List<YellowPress> yellowPresses;
 
-        public List<Singer> Singers
+        public List<YellowPress> YellowPresses
         {
-            get => singers;
+            get => yellowPresses;
             set
             {
-                singers = value;
+                yellowPresses = value;
                 Signal();
             }
         }
 
-        public Singer SelectedSinger { get; set; }
+        public YellowPress SelectedYellowPress { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -44,20 +44,8 @@ namespace wpf_1135_EF_sample
             DataContext=this;
             using (var db = new _1135New2024Context())
             {
-                Singers = db.Singers.
-
-                    Include(s => s.YellowPresses).
-                    ToList();
-            }
-        }
-
-        private void UpdateList()
-        {
-            using (var db = new _1135New2024Context())
-            {
-                Singers = db.Singers.
-
-                    Include(s => s.YellowPresses).
+                YellowPresses = db.YellowPresses.
+                    Include(s => s.IdSingerNavigation).
                     ToList();
             }
         }
@@ -65,6 +53,9 @@ namespace wpf_1135_EF_sample
         void Signal([CallerMemberName] string prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
+        private void Delete(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="YellowPressWindow" Height="450" Width="800">
     <Grid>
-        <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}"  Grid.Row="1">
+        <StackPanel>
+            <ListView ItemsSource="{Binding YellowPresses}" SelectedItem="{Binding SelectedYellowPress}"  Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>
@@ -22,5 +23,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Width="100" Height="50" Content="удалить" FontSize="16" Click="Delete"/>
+        </StackPanel>
     </Grid>
 </Window>
